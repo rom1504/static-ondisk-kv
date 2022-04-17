@@ -1,3 +1,7 @@
+## 1.1.2
+
+* add space after key in error
+
 ## 1.1.1
 
 * simplify implementation of OnDiskKV
