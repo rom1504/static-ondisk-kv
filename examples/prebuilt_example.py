@@ -2,6 +2,8 @@ from static_ondisk_kv import OnDiskKV
 from tqdm import tqdm
 import random
 
+# wget https://huggingface.co/datasets/laion/laion5B-watermark-safety-ordered/resolve/main/laion5B-watermark-safety-ordered -O /media/nvme/mybigfile
+
 kv = OnDiskKV(file="/media/nvme/mybigfile", key_format="q", value_format="ee")
 print("length", kv.length)
 k = kv.get_key(100)
