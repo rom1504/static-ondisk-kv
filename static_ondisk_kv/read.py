@@ -20,8 +20,8 @@ class OrderedFile:
         self.key_size = key_size
         self.value_size = value_size
         self.length = int(size / self.entry_size)
-        with open(file, "r+b") as f:
-            self.mm = mmap.mmap(f.fileno(), 0)
+        self.f = open(file, "rb")  # pylint: disable=consider-using-with
+        self.mm = mmap.mmap(self.f.fileno(), 0, prot=mmap.PROT_READ)
 
     def get_key(self, i):
         return unpack(self.key_format, self.mm[self.entry_size * i : self.entry_size * i + self.key_size])[0]
