@@ -1,3 +1,3 @@
-from python_template import hello_world
+from static_ondisk_kv import hello_world
 
 hello_world("hi")
