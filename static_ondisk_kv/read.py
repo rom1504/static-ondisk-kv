@@ -40,8 +40,26 @@ class OnDiskKV:
     """on disk kv provides a fast and simple kv store"""
 
     def __init__(self, file, key_format="q", value_format="ee"):
+        self.filename = file
+        self.key_format = key_format
+        self.value_format = value_format
         self.ordered_file = OrderedFile(file, key_format, value_format)
         self.length = self.ordered_file.length
+
+    def __getstate__(self):
+        return {
+            "length": self.length,
+            "filename": self.filename,
+            "key_format": self.key_format,
+            "value_format": self.value_format,
+        }
+
+    def __setstate__(self, state):
+        self.length = state["length"]
+        self.filename = state["filename"]
+        self.key_format = state["key_format"]
+        self.value_format = state["value_format"]
+        self.ordered_file = OrderedFile(self.filename, self.key_format, self.value_format)
 
     def get_key(self, i):
         return self.ordered_file.get_key(i)
