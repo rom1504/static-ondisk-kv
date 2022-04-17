@@ -53,5 +53,5 @@ class OnDiskKV:
         i = bisect.bisect_left(self.ondiskkv_by_index, k, lo=0, hi=self.length)
         k2 = self.get_key(i)
         if k != k2:
-            raise ValueError(str(k) + "not Found")
+            raise ValueError(str(k) + " not found")
         return self.get_value(i)
