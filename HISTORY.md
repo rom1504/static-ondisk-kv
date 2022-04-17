@@ -1,3 +1,7 @@
+## 1.1.1
+
+* simplify implementation of OnDiskKV
+
 ## 1.1.0
 
 * Make OnDiskKV pickable.
